@@ -1,6 +1,6 @@
 from scapy.layers.l2 import Ether
 from scapy.layers.inet import IP, TCP
-import cst
+import networks.cst as cst
 
 
 class Filter:

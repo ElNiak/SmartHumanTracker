@@ -1,10 +1,10 @@
 import main
-import test_statistics
-from throughput import Throughput
-from graph import Graph
-from house import House
-import analysis_data
-from distribution import Distribution
+from networks.throughput import Throughput
+from analyser.graph import Graph
+import analyser.test_statistics
+import analyser.analysis_data as analysis_data
+from analyser.distribution import Distribution
+from environment.house import House
 import logging
 
 

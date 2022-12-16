@@ -1,6 +1,6 @@
 from scipy import stats
 import logging
-from distribution import Distribution
+from analyser.distribution import Distribution
 
 class House:
 

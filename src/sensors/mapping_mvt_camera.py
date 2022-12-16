@@ -1,8 +1,8 @@
 import main
-from throughput import Throughput
-from graph import Graph
-import analysis_data
-import test_statistics
+from networks.throughput import Throughput
+from analyser.graph import Graph
+import analyser.analysis_data as analysis_data
+import analyser.test_statistics
 
 
 def graph_camera(conf1, conf2, file):

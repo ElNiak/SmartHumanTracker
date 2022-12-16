@@ -1,5 +1,5 @@
 from scapy.utils import RawPcapReader
-import cst
+import networks.cst as cst
 
 
 def option_filter(pkt_data, filtering):

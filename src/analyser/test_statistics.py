@@ -2,8 +2,8 @@ from scipy import stats
 from scipy import signal
 import numpy as np
 import logging
-from src.distribution import Distribution
-from graph import Graph
+from analyser.distribution import Distribution
+from analyser.graph import Graph
 
 
 def difference_data(data, size, delay):

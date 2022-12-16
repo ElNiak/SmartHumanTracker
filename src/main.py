@@ -1,19 +1,26 @@
 import configparser
 
 import numpy
-import recognize_ir_pattern
-from filter import Filter
-from throughput import Throughput
-from graph import Graph
-from packets import Packets
-from payload_size import PayloadSize
-import analysis_data
-import mapping_light_camera
-import mapping_mvt_camera
 from scapy.layers.inet import UDP, TCP
 from scapy.all import *
 import time
+import logging
+import os 
 
+import analyser.recognize_ir_pattern as recognize_ir_pattern
+from analyser.graph import Graph
+import analyser.analysis_data as analysis_data
+
+from networks.filter import Filter
+from networks.throughput import Throughput
+from networks.packets import Packets
+from networks.payload_size import PayloadSize
+
+import sensors.mapping_light_camera
+import sensors.mapping_mvt_camera
+from utils.ArgumentsParser import ArgumentParser
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def execute_single_config(filename_config, filename_data):
     """
@@ -155,19 +162,22 @@ def remove_payload(file,name):
 
 
 if __name__ == '__main__':
+    
+    args_parser = ArgumentParser()
+    args = args_parser.parse_arguments()
 
-    #uncomment to debug
-    #logger = logging.getLogger()
-    #logger.setLevel(logging.DEBUG)
+    if args.verbose:
+        logger = logging.getLogger()
+        logger.setLevel(logging.DEBUG)
 
     startTime = time.perf_counter()
+    
     # execute_single_config('basic.ini', 'camera_light_on_off.pcap')
-
-    #execute_single_config('c1.ini', 'on_off_infrared.pcap')
+    # execute_single_config('c1.ini', 'on_off_infrared.pcap')
 
     # recognize_ir_pattern.IR_pattern_finder('c1.ini', 'on_off_infrared.pcap')
 
-    #false negative
+    # false negative
     # recognize_ir_pattern.IR_pattern_finder('c1.ini', 'test_ir.pcap') # in auto mode this data
 
     #False positive test
@@ -186,7 +196,7 @@ if __name__ == '__main__':
 
     #mapping_mvt_camera.graph_camera( 'kot_xiaomi.ini','kot_dlink.ini', 'result_kot/sec/29.pcap')
 
-    mapping_mvt_camera.graph_camera('kot_dlink.ini', 'kot_xiaomi.ini', 'result_kot/tris/28.pcap')
+    sensors.mapping_mvt_camera.graph_camera('kot_dlink.ini', 'kot_xiaomi.ini', 'result_kot/tris/28.pcap')
 
     # mapping_mvt_camera.cusum_search('c1.ini', 'camera_movement.pcap')
 

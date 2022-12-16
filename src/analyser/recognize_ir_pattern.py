@@ -1,7 +1,7 @@
 import main
-from throughput import Throughput
-from graph import Graph
-import frequent_sequence_miner
+from networks.throughput import Throughput
+from analyser.graph import Graph
+import analyser.frequent_sequence_miner
 
 def IR_pattern_finder(conf1, file):
     packet_cam1 = main.execute_single_config(conf1, file)

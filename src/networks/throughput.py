@@ -1,5 +1,5 @@
 import numpy as np
-import analysis_data
+import analyser.analysis_data as analysis_data
 
 def find_nearest(array, value):
     """
